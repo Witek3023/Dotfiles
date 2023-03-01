@@ -1,6 +1,6 @@
 # Dotfiles
-Distro - Fedora 37
-Wm - i3-gaps
-Terminal -kitty
-Polybar & Terminal Font -JetBrainsMono Nerd Font 
-Theme - Nordic-darker
+Distro - Fedora 37 <br>
+Wm - i3-gaps <br>
+Terminal -kitty <br>
+Polybar & Terminal Font -JetBrainsMono Nerd Font <br>
+Theme - Nordic-darker <br>
