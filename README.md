@@ -1,7 +1,10 @@
 # Dotfiles
-Distro - Fedora 37 <br>
-Wm - i3-gaps <br>
+Distro - Fedora 37 Silverblue<br>
+Wm - Gnome <br>
 Terminal -kitty <br>
-Polybar & Terminal Font -JetBrainsMono Nerd Font <br>
-Theme - Nordic-darker <br>
-![screenshot](screenshot.jpg)
+Terminal Font -JetBrainsMono Nerd Font <br>
+Theme - Graphite-Dark-compact-nord <br>
+Icons - Tela-nord-dark
+Cursor - Oreo-white
+Extensions - Blur My Shell; Dash To Panel; User Themes;
+![screenshot]()
