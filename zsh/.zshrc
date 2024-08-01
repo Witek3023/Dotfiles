@@ -163,3 +163,4 @@ alias free='free -m'           # show sizes in MB
 # Other
 alias rr='curl -s -L https://raw.githubusercontent.com/keroserene/rickrollrc/master/roll.sh | bash'
 
+source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
