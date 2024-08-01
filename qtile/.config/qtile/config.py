@@ -30,7 +30,7 @@ from libqtile.lazy import lazy
 from libqtile.utils import guess_terminal
 
 mod = "mod4"
-terminal = guess_terminal()
+terminal = "kitty"
 
 keys = [
     # A list of available commands that can be bound to keys can be found
@@ -157,6 +157,7 @@ screens = [
                     },
                     name_transform=lambda name: name.upper(),
                 ),
+                widget.KeyboardLayout(configured_keyboards=['pl']),
                 widget.TextBox("default config", name="default"),
                 widget.TextBox("Press &lt;M-r&gt; to spawn", foreground="#d75f5f"),
                 # NB Systray is incompatible with Wayland, consider using StatusNotifier instead
