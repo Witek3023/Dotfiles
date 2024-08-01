@@ -24,7 +24,8 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-from libqtile import bar, layout, qtile, widget
+import subprocess
+from libqtile import bar, layout, hook, qtile, widget
 from libqtile.config import Click, Drag, Group, Key, Match, Screen
 from libqtile.lazy import lazy
 from libqtile.utils import guess_terminal
@@ -215,6 +216,11 @@ wl_input_rules = None
 # xcursor theme (string or None) and size (integer) for Wayland backend
 wl_xcursor_theme = None
 wl_xcursor_size = 24
+
+@hook.subscribe.startup_once
+def start_once():
+    subprocess.call(['/home/witekg/.config/qtile/scripts/autostart.sh'])
+    subprocess.call(['/home/witekg/.config/qtile/scripts/swayidle.sh'])
 
 # XXX: Gasp! We're lying here. In fact, nobody really uses or cares about this
 # string besides java UI toolkits; you can see several discussions on the
