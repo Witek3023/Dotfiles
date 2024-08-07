@@ -1,0 +1,105 @@
+
+window#waybar {
+    background-color: rgba(46, 52, 64, 0.0); /* Transparent background */
+    color: #d8dee9; /* Nord's Frost color for text */
+    transition-property: background-color;
+    transition-duration: .5s;
+    border-radius: 5px; /* Rounded corners */
+}
+
+window#waybar.hidden {
+    opacity: 0.2;
+}
+
+#workspaces,
+#clock,
+#battery,
+#cpu,
+#memory,
+#disk,
+#backlight,
+#network,
+#pulseaudio,
+#wireplumber,
+#custom-media,
+#tray,
+#cpu,
+#disk,
+#memory,
+#mode,
+#idle_inhibitor,
+#scratchpad,
+#mpd,
+#backlight,
+#temperature,
+#privacy,
+#keyboard-state,
+#language {
+    background-color: #232731; /* Dark Nord background */
+    padding:  0px 7px;
+    margin: 5px;
+    color: #d8dee9; /* Nord's Frost color for text */
+    border-radius: 10px; /* Rounded corners */
+    border-top: 3px solid #a3be8c;
+    border-bottom: 3px solid #a3be8c;
+    border-left: 3px solid #a3be8c;
+    border-right: 3px solid #a3be8c;
+    font-family: JetBrains Mono NF Medium;
+    font-size: 15px;
+}
+
+#workspaces button {
+    font-family: JetBrains Mono NF Medium;
+    font-size: 20px;
+}
+
+#battery.charging,
+#battery.plugged {
+    color: #232731;
+    background-color: #a3be8c; /* Nord's Green color for charging/plugged */
+    border-top: 3px solid #232731;
+    border-bottom: 3px solid #232731;
+    border-left: 3px solid #232731;
+    border-right: 3px solid #232731;
+    font-family: JetBrains Mono NF Medium;
+    font-size: 15px;
+}
+
+#battery.critical:not(.charging) {
+    background-color: #bf616a;
+    color: #d8dee9;
+    animation-name: blink;
+    animation-duration: 0.5s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    border-top: 3px solid #232731;
+    border-bottom: 3px solid #232731;
+    border-left: 3px solid #232731;
+    border-right: 3px solid #232731;
+    font-family: JetBrains Mono NF Medium;
+    font-size: 15px;
+}
+
+#workspaces button.urgent,
+#network.disconnected,
+#tray > .needs-attention,
+#pulseaudio.muted,
+#wireplumber.muted,
+#mpd.disconnected {
+    background-color: #bf616a; /* Nord's Red color for muted or disconnected modules */
+    border-top: 3px solid #232731;
+    border-bottom: 3px solid #232731;
+    border-left: 3px solid #232731;
+    border-right: 3px solid #232731;
+    font-family: JetBrains Mono NF Medium;
+    font-size: 15px;
+}
+
+@keyframes blink {
+    to {
+        background-color: #d8dee9; /* Nord's Frost color */
+        color: #232731; /* Nord's Polar Night color */
+    }
+}
+

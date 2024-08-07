@@ -1,0 +1,58 @@
+{
+    "height": 30,
+    "spacing": 4,
+    "modules-left": ["sway/workspaces", "sway/scratchpad"],
+    "modules-right": ["pulseaudio", "network", "backlight", "battery", "clock", "tray"],
+    "sway/scratchpad": {
+        "format": "{icon} {count}",
+        "show-empty": false,
+        "format-icons": ["", ""],
+        "tooltip": true,
+        "tooltip-format": "{app}: {title}"
+    },
+    "clock": {
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+        "format-alt": "{:%Y-%m-%d}"
+    },
+    "sway/workspaces": {
+            "disable-scroll": true,
+            "all-outputs": true,
+            "warp-on-scroll": false,
+            "format": "{icon}",
+            "format-icons": {
+                "urgent": "",
+                "focused": "",
+                "default": ""
+            }
+    },
+    "backlight": {
+        "format": "{percent}% {icon}",
+        "format-icons": ["", "", "", "", "", "", "", "", ""]
+    },
+    "battery": {
+        "states": {
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{capacity}% {icon}",
+        "format-charging": "{capacity}% 󰂄",
+        "format-plugged": "{capacity}% ",
+        "format-alt": "{time} {icon}",
+        "format-icons": ["󰂎", "󰁼", "󰁾", "󰂁", "󰁹"]
+    },
+    "network": {
+        "format-wifi": "{essid}  ",
+        "format-ethernet": "{ipaddr}/{cidr} 󰈀",
+        "tooltip-format": "{ifname} via {gwaddr} 󰲝",
+        "format-linked": "{ifname} (No IP) 󰲝",
+        "format-disconnected": "Disconnected 󰖪",
+        "format-alt": "{ifname}: {ipaddr}/{cidr}"   
+    },
+    "pulseaudio": {
+        "format": "󰓃 {volume}%",
+        "format-bluetooth": "󰓃󰂯 {volume}%",
+        "format-bluetooth-muted": "󰓃󰂯 muted",
+        "format-muted": "󰓃 muted",
+        "on-click": "pavucontrol"
+    }
+}
