@@ -20,9 +20,7 @@ export MANPAGER="nvim +Man!"                    # "nvim" as manpager
 
 
 ### Set the Oh My Zsh theme and plugins preferences
-ZSH_THEME="dst"
-ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=8,italic"
-ZSH_AUTOSUGGEST_STRATEGY=(completion) 
+ZSH_THEME="agnoster"
 
 ### PATH
 if [ -d "$HOME/.bin" ] ;
@@ -149,7 +147,7 @@ COMPLETION_WAITING_DOTS="%F{green}waiting...%f"
 HIST_STAMPS="dd/mm/yyyy"
 
 # Plugins
-plugins=(git zsh-syntax-highlighting zsh-autosuggestions)
+plugins=(git zsh-syntax-highlighting)
 
 # Using Oh my zsh
 source $ZSH/oh-my-zsh.sh
