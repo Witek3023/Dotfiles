@@ -20,7 +20,7 @@ export MANPAGER="nvim +Man!"                    # "nvim" as manpager
 
 
 ### Set the Oh My Zsh theme and plugins preferences
-ZSH_THEME="dst"
+ZSH_THEME="refined"
 
 ### PATH
 if [ -d "$HOME/.bin" ] ;

@@ -24,11 +24,11 @@ set $c9 #BF616A
     set $mod Mod4
     set $term kitty
     set $menu rofi -show drun -prompt start
-    set $wallpaper $HOME/.config/sway/wallpaper.png
+    set $wallpaper $HOME/Dotfiles/sway/.config/sway/wallpaper.png
     set $swaylock swaylock -i $wallpaper -u
 
 ### Assign
-    assign [app_id="qutebrowser"] workspace number 2
+    assign [app_id="firefox"] workspace number 2
 
 ### Screen Idle Lock
 exec swayidle -w \
@@ -47,9 +47,18 @@ input "1739:0:Synaptics_TM3276-022" {
 input "2:10:TPPS/2_IBM_TrackPoint" {
     dwt enabled
     tap enabled
-    natural_scroll disabled
+    natural_scroll enabled
     middle_emulation enabled
 }
+
+input "2:7:SynPS/2_Synaptics_TouchPad" {
+    dwt enabled
+    tap enabled
+    natural_scroll enabled
+    middle_emulation disabled
+    scroll_method two_finger  # or edge, depending on your preference
+}
+
 
 ### Key bindings
 
@@ -162,6 +171,7 @@ font pango:JetBrains Mono Nerd Font 12
     exec sway output '*' bg $wallpaper fill
     exec autotiling -l 4
     exec swaymsg input type:keyboard xkb_layout "pl"
+    exec rfkill block bluetooth
     exec nm-applet
     exec blueman-applet
     exec waybar

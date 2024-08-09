@@ -2,7 +2,7 @@
     "height": 30,
     "spacing": 4,
     "modules-left": ["sway/workspaces", "sway/scratchpad"],
-    "modules-right": ["pulseaudio", "network", "backlight", "battery", "clock", "tray"],
+    "modules-right": ["idle_inhibitor", "pulseaudio", "network", "backlight", "battery", "clock", "tray"],
     "sway/scratchpad": {
         "format": "{icon} {count}",
         "show-empty": false,
