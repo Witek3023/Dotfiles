@@ -1,1 +1,8 @@
-@theme "rounded-green-dark.rasi"
+configuration {
+ modi: "window,drun,ssh,combi";
+ font: "JetBrains Mono NF Medium 14";
+ combi-modi: "window,drun,ssh";
+ }
+@theme "~/.config/rofi/themes/dtos-center.rasi"
+
+

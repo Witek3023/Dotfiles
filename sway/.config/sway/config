@@ -167,6 +167,9 @@ font pango:JetBrains Mono Nerd Font 12
     corner_radius 9
 
 
+
+### Autostart
+
 # Set wallpaper
 output '*' bg $wallpaper fill
 
