@@ -46,6 +46,7 @@ fi
 if [ -d "$HOME/.config/emacs/bin/" ] ;
   then PATH="$HOME/.config/emacs/bin/:$PATH"
 fi
+export PATH=$PATH:/home/witekg/.spicetify
 
 
 ### SETTING OTHER ENVIRONMENT VARIABLES
