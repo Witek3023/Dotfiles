@@ -117,7 +117,7 @@ input "2:7:SynPS/2_Synaptics_TouchPad" {
     bindsym $mod+Shift+space floating toggle
     bindsym $mod+space focus mode_toggle
     bindsym $mod+a focus parent
-
+ 
 # Scratchpad:
     bindsym $mod+Shift+minus move scratchpad
     bindsym $mod+minus scratchpad show
@@ -152,9 +152,18 @@ font pango:JetBrains Mono Nerd Font 12
     bindsym XF86MonBrightnessDown exec light -U 5
 
 # Music
-    bindsym Ctrl+Shift+Prior exec dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous
-    bindsym Ctrl+Shift+Next exec dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next
-    bindsym Ctrl+Shift+End exec dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause
+    bindsym Ctrl+Shift+Prior exec playerctl previous
+    bindsym Ctrl+Shift+Next exec playerctl next
+    bindsym Ctrl+Shift+End exec playerctl play-pause
+    
+    # Play/Pause
+    bindsym XF86AudioPlay exec playerctl play-pause
+
+    # Next track
+    bindsym XF86AudioNext exec playerctl next
+
+    # Previous track
+    bindsym XF86AudioPrev exec playerctl previous
 
 # Screenshots
     bindsym Print exec grim
