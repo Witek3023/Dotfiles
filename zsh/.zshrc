@@ -16,8 +16,7 @@ export HISTORY_IGNORE="(ls|cd|pwd|exit|sudo reboot|history|cd -|cd ..)"
 export LANG=en_US.UTF-8
 
 ### SET MANPAGER
-export MANPAGER="nvim +Man!"                    # "nvim" as manpager
-
+export MANPAGER="vim -M +MANPAGER - "           # Using Vim as manpager
 
 ### Set the Oh My Zsh theme and plugins preferences
 ZSH_THEME="refined"
