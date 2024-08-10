@@ -33,8 +33,8 @@ set $c9 #BF616A
 
 ### Screen Idle Lock
 exec swayidle -w \
-          timeout 300 '$swaylock -f -c 000000' \
-          timeout 600 '$swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
+          timeout 100 '$swaylock -f -c 000000' \
+          timeout 200 '$swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
           before-sleep '$swaylock -f -c 000000'
 
 ### Input configuration
@@ -68,7 +68,7 @@ input "2:7:SynPS/2_Synaptics_TouchPad" {
     bindsym $mod+q kill
     bindsym $mod+d exec $menu
     bindsym $mod+l exec $swaylock
-    bindsym $mod+p exec rofi -show power-menu -modi power-menu:$HOME/.config/rofi/rofi-power-menu
+    bindsym $mod+p exec rofi -show power-menu -modi power-menu:$HOME/.config/rofi/rofi-power-menu -theme $HOME/.config/rofi/themes/dtos-dmenu.rasi
     bindsym $mod+Shift+r reload
     bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
     
@@ -181,15 +181,14 @@ font pango:JetBrains Mono Nerd Font 12
 
 # Set wallpaper
 output '*' bg $wallpaper fill
+# Set the keyboard layout
+input type:keyboard xkb_layout "pl"
 
 # Set up D-Bus environment before launching applications
 exec dbus-update-activation-environment --systemd DBUS_SESSION_BUS_ADDRESS DISPLAY WAYLAND XAUTHORITY
 
 # Start autotiling with home-relative path
 exec python3 $HOME/.config/sway/scripts/autotiling.py -l 4
-
-# Set the keyboard layout
-exec swaymsg input type:keyboard xkb_layout "pl"
 
 # Block Bluetooth by default
 exec rfkill block bluetooth
