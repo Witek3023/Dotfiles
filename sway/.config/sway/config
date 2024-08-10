@@ -23,6 +23,10 @@ set $c9 #BF616A
 
 ### Variables
     set $mod Mod4
+    set $left h
+    set $down j
+    set $up k
+    set $right l
     set $term kitty
     set $menu rofi -show drun -prompt start
     set $wallpaper $HOME/Dotfiles/sway/.config/sway/wallpaper.png
@@ -67,7 +71,7 @@ input "2:7:SynPS/2_Synaptics_TouchPad" {
     bindsym $mod+Return exec $term
     bindsym $mod+q kill
     bindsym $mod+d exec $menu
-    bindsym $mod+l exec $swaylock
+    bindsym $mod+Shift+p exec $swaylock
     bindsym $mod+p exec rofi -show power-menu -modi power-menu:$HOME/.config/rofi/rofi-power-menu -theme $HOME/.config/rofi/themes/dtos-dmenu.rasi
     bindsym $mod+Shift+r reload
     bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
@@ -75,16 +79,16 @@ input "2:7:SynPS/2_Synaptics_TouchPad" {
 # Moving:
 
     # Focus
-        bindsym $mod+Left focus left
-        bindsym $mod+Down focus down
-        bindsym $mod+Up focus up
-        bindsym $mod+Right focus right
+        bindsym $mod+$left focus left
+        bindsym $mod+$down focus down
+        bindsym $mod+$up focus up
+        bindsym $mod+$right focus right
 
     # Windows
-        bindsym $mod+Shift+Left move left
-        bindsym $mod+Shift+Down move down
-        bindsym $mod+Shift+Up move up
-        bindsym $mod+Shift+Right move right
+        bindsym $mod+Shift+$left move left
+        bindsym $mod+Shift+$down move down
+        bindsym $mod+Shift+$up move up
+        bindsym $mod+Shift+$right move right
         floating_modifier $mod normal
 
 # Workspaces:
@@ -117,7 +121,14 @@ input "2:7:SynPS/2_Synaptics_TouchPad" {
     bindsym $mod+Shift+space floating toggle
     bindsym $mod+space focus mode_toggle
     bindsym $mod+a focus parent
- 
+    bindsym $mod+b splith
+    bindsym $mod+v splitv
+
+    # Switch the current container between different layout styles
+    bindsym $mod+s layout stacking
+    bindsym $mod+w layout tabbed
+    bindsym $mod+e layout toggle split
+
 # Scratchpad:
     bindsym $mod+Shift+minus move scratchpad
     bindsym $mod+minus scratchpad show
@@ -186,9 +197,6 @@ input type:keyboard xkb_layout "pl"
 
 # Set up D-Bus environment before launching applications
 exec dbus-update-activation-environment --systemd DBUS_SESSION_BUS_ADDRESS DISPLAY WAYLAND XAUTHORITY
-
-# Start autotiling with home-relative path
-exec python3 $HOME/.config/sway/scripts/autotiling.py -l 4
 
 # Block Bluetooth by default
 exec rfkill block bluetooth
