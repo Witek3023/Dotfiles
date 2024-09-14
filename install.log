@@ -1,9 +1,0 @@
-[15:56:01 2024-08-09] FETCHING Version 2.37.0
-[15:56:01 2024-08-09] CREATING /home/witekg/.spicetify
-[15:56:01 2024-08-09] DOWNLOADING https://github.com/spicetify/cli/releases/download/v2.37.0/spicetify-2.37.0-linux-amd64.tar.gz
-[15:56:02 2024-08-09] EXTRACTING /home/witekg/.spicetify/spicetify.tar.gz
-[15:56:02 2024-08-09] SETTING EXECUTABLE PERMISSIONS TO /home/witekg/.spicetify/spicetify
-[15:56:02 2024-08-09] REMOVING /home/witekg/.spicetify/spicetify.tar.gz
-[15:56:02 2024-08-09] APPENDING /home/witekg/.spicetify to PATH in /home/witekg/.zshrc
-[15:56:02 2024-08-09] spicetify v2.37.0 was installed successfully to /home/witekg/.spicetify
-[15:56:02 2024-08-09] Run 'spicetify --help' to get started

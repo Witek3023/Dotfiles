@@ -158,7 +158,10 @@ source $ZSH/oh-my-zsh.sh
 alias df='df -h'               # human-readable sizes
 alias free='free -m'           # show sizes in MB
 
+# Changing "ls" to "eza"
+alias ls='eza -l --color=always --group-directories-first' # my preferred listing
+alias la='eza -la --color=always --group-directories-first'  # all files and dirs
+alias lt='eza -aT --color=always --group-directories-first' # tree listing
+
 # Other
 alias rr='curl -s -L https://raw.githubusercontent.com/keroserene/rickrollrc/master/roll.sh | bash'
-
-source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
