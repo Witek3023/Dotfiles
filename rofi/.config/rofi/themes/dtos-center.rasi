@@ -1,0 +1,100 @@
+/**
+ * ROFI Color theme
+ * NAME: dt-center.rasi
+ * DESCRIPTION: This is a centered prompt.
+ * AUTHOR: Derek Taylor (DT)
+ */
+
+* {
+    background-color:            #1d2129;
+    border-color:                #a3be8c;
+    text-color:                  #d8dee9;
+    font:                        "JetBrains Mono NF Medium 13";
+    prompt-font:                 "JetBrains Mono NF Medium 13";
+    prompt-background:           #d08770;
+    prompt-foreground:           #1d2129;
+    prompt-padding:              4px;
+    alternate-normal-background: #282c34;
+    alternate-normal-foreground: @text-color;
+    selected-normal-background:  #a3be8c;
+    selected-normal-foreground:  #1d2129;
+    spacing:                     3;
+}
+#window {
+    border:  2;
+    padding: 5;
+    border-radius:  10px;
+}
+#mainbox {
+    border:  0;
+    padding: 0;
+}
+#message {
+    border:       1px dash 0px 0px ;
+    padding:      1px ;
+}
+#listview {
+    fixed-height: 0;
+    border:       2px solid 0px 0px ;
+    border-color: #d08770;
+    spacing:      2px ;
+    scrollbar:    true;
+    padding:      2px 0px 0px ;
+}
+#element {
+    border:  0;
+    padding: 1px ;
+}
+#element.selected.normal {
+    background-color: @selected-normal-background;
+    text-color:       @selected-normal-foreground;
+}
+#element.alternate.normal {
+    background-color: @alternate-normal-background;
+    text-color:       @alternate-normal-foreground;
+}
+#scrollbar {
+    width:        0px ;
+    border:       0;
+    handle-width: 0px ;
+    padding:      0;
+}
+#sidebar {
+    border: 2px dash 0px 0px ;
+}
+#button.selected {
+    background-color: @selected-normal-background;
+    text-color:       @selected-normal-foreground;
+}
+#inputbar {
+    spacing:    0;
+    padding:    1px ;
+}
+#case-indicator {
+    spacing:    0;
+}
+#entry {
+    padding: 4px 4px;
+    expand: false;
+    width: 10em;
+}
+#prompt {
+    padding:          @prompt-padding;
+    background-color: @prompt-background;
+    text-color:       @prompt-foreground;
+    font:             @prompt-font;
+    border-radius:    2px;
+}
+
+element-text {
+    background-color: inherit;
+    text-color:       inherit;
+}
+
+/* Not actually relevant for this configuration, but it might
+be useful to someone having issues with their icons' background color
+
+element-icon {
+    background-color: inherit;
+}
+*/
