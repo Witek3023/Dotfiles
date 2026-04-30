@@ -11,13 +11,14 @@ Currently used dotfiles, maintained using stow.
 
 **shell** - zsh<br>
 **prompt** - custom zsh<br>
-**plugins** - zsh-syntax-hightlight zsh-autocompletion<br>
+**plugins** - zsh-syntax-highlighting, zsh-autocompletion<br>
 **terminal** - foot<br>
 **colorscheme** - Nord<br>
-**wm"" - sway<br>
-**fonts** - IBM Plex Sans JetBrains Mono Nerd Font<br>
+**wm** - sway<br>
+**fonts** - IBM Plex Sans, JetBrains Mono Nerd Font<br>
 <br>
-MIT License
+
+### MIT License
 
 Copyright (c) 2026 Witek3023
 
