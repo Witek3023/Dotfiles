@@ -176,8 +176,8 @@ zstyle ':vcs_info:git:*' formats ' %F{yellow}%f%K{yellow}%F{black}%b%f%k%F{ye
 zstyle ':vcs_info:*' enable git
 
 # Main Prompt 
-PROMPT='%F{21}%f%K{21}%F{white} %~ %f%k%F{21}%f${vcs_info_msg_0_}
-%(?.%F{cyan}.%F{red})%# ❯%f '
+PROMPT='%F{2}%f%K{2}%F{black} %~ %f%k%F{2}%f${vcs_info_msg_0_}
+%(?.%F{3}.%F{1})%# ❯%f '
 RPROMPT='%F{242} %T%f' # Clock on the right
 
 # --- ALIASES ---
