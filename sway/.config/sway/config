@@ -29,7 +29,7 @@ set $c9 #BF616A
     set $right l
     set $term kitty
     set $menu rofi -show drun -prompt start
-    set $wallpaper $HOME/Dotfiles/sway/.config/sway/wallpaper.png
+    set $wallpaper $HOME/Dotfiles/sway/.config/sway/forest.jpg
     set $swaylock swaylock -i $wallpaper -u
 
 ### Assign
@@ -192,6 +192,8 @@ font pango:JetBrains Mono Nerd Font 12
 
 # Set wallpaper
 output '*' bg $wallpaper fill
+# Sway config
+output * scale 1.5
 # Set the keyboard layout
 input type:keyboard xkb_layout "pl"
 
