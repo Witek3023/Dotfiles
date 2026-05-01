@@ -4,11 +4,10 @@ set -e
 echo "Instaling dependencies..."
 sudo dnf install -y git gtk3 gtk4 libadwaita sassc
 
-THEME_DIR="$HOME/.themes"
-mkdir -p "$THEME_DIR"
-
 echo "Downloading theme..."
-cd "$THEME_DIR"
+# używamy tymczasowego katalogu
+TMP_THEME_DIR=$(mktemp -d /tmp/orchis-XXXX)
+cd "$TMP_THEME_DIR"
 
 if [ ! -d "Orchis-theme" ]; then
     git clone https://github.com/vinceliuice/Orchis-theme.git
@@ -18,12 +17,12 @@ else
     git pull
 fi
 
-cd $HOME/.themes/Orchis-theme
+cd "$TMP_THEME_DIR/Orchis-theme"
 
 echo "Installing Orchis-theme..."
 ./install.sh -t green -c dark --tweaks solid nord -l
 
-GTK_THEME="Orchis-dark-green"
+GTK_THEME="Orchis-Green-Dark-Nord"
 echo "Setting theme..."
 gsettings set org.gnome.desktop.interface gtk-theme "$GTK_THEME"
 gsettings set org.gnome.desktop.interface color-scheme "prefer-dark"
@@ -32,8 +31,8 @@ echo "Linking for libadwaita..."
 sudo rm -rf ~/.config/gtk-4.0 
 ln -s ~/.local/share/themes/Orchis-Green-Dark-Nord/gtk-4.0 ~/.config/gtk-4.0
 
-rm -r ~/.themes
-
+# usuwamy katalog tymczasowy po instalacji
+rm -rf "$TMP_THEME_DIR"
 
 ICON_DIR="$HOME/.local/share/icons"
 mkdir -p "$ICON_DIR"
