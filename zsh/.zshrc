@@ -9,8 +9,8 @@
 
 # --- EXPORTS && ENV ---
 export TERM="xterm-256color"
-export EDITOR="emacsclient -t -a ''"
-export VISUAL="emacsclient -c -a emacs"
+export EDITOR="vim"
+export VISUAL="vim"
 export LANG=en_US.UTF-8
 export KEYTIMEOUT=1 # Reduce delay
 
@@ -79,11 +79,15 @@ if [[ -s "$ZCOMPDUMP" && (! -s "${ZCOMPDUMP}.zwc" || "$ZCOMPDUMP" -nt "${ZCOMPDU
   zcompile "$ZCOMPDUMP"
 fi
 
+
 # --- LS_COLORS files coloring ---
 if [ -x /usr/bin/dircolors ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
-    export LS_COLORS="${LS_COLORS/di=01;34/di=01;32}" # Replace blue with green for directories
-    export LS_COLORS="${LS_COLORS/di=34/di=32}" 
+    export LS_COLORS="${LS_COLORS/di=01;34/di=01;32}"
+    export LS_COLORS="${LS_COLORS/di=34/di=32}"
+    LS_COLORS=$(echo "$LS_COLORS" | tr ':' '\n' | grep -vE '^(tw|ow)=' | tr '\n' ':')
+    LS_COLORS="${LS_COLORS%:}"
+    export LS_COLORS="${LS_COLORS}:tw=30;42:ow=30;42"
 fi
 
 # Enhanced Tab-Completion Menu
