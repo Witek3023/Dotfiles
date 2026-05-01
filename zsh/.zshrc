@@ -110,8 +110,8 @@ bindkey '^[[3;5~' kill-word             # Ctrl + Delete
 # --- PLUGINS ---
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=242'
 ZSH_AUTOSUGGEST_STRATEGY=(history completion) # Suggest based on history, then completion engine
-source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
-source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source $HOME/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+source $HOME/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # --- FUNCTIONS ---
 
@@ -190,5 +190,3 @@ alias rr='roll.sh'
 
 # --- FZF INTEGRATION ---
 source <(fzf --zsh)
-source /home/witekg/.zsh/zsh-autocomplete/zsh-autocomplete.plugin.zsh
-source /home/witekg/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh

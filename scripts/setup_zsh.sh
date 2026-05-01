@@ -25,11 +25,8 @@ ensure_in_zshrc() {
   grep -Fxq "$line" "$ZSHRC" || echo "$line" >> "$ZSHRC"
 }
 
-install_plugin "zsh-autocomplete" "https://github.com/marlonrichert/zsh-autocomplete"
+install_plugin "zsh-autosuggestions" "https://github.com/zsh-users/zsh-autosuggestions"
 install_plugin "zsh-syntax-highlighting" "https://github.com/zsh-users/zsh-syntax-highlighting"
-
-ensure_in_zshrc "source $ZSH_CUSTOM/zsh-autocomplete/zsh-autocomplete.plugin.zsh"
-ensure_in_zshrc "source $ZSH_CUSTOM/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
 
 ZSH_PATH="$(which zsh)"
 

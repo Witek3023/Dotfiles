@@ -27,7 +27,7 @@ set $c9 #BF616A
     set $down j
     set $up k
     set $right l
-    set $term kitty
+    set $term foot
     set $menu rofi -show drun -prompt start
     set $wallpaper $HOME/Dotfiles/sway/.config/sway/forest.jpg
     set $swaylock swaylock -i $wallpaper -u
@@ -184,7 +184,6 @@ font pango:JetBrains Mono Nerd Font 12
     gaps inner 20
     default_border pixel 2
     default_floating_border pixel 1
-    corner_radius 9
 
 
 
