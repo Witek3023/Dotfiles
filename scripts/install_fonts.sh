@@ -20,8 +20,6 @@ sudo mkdir -p "$FONT_DIR"
 curl -L "$FONT_URL" -o /tmp/JetBrainsMono.zip
 sudo unzip -o /tmp/JetBrainsMono.zip -d "$FONT_DIR"
 
-sudo dnf install google-noto-sans-fonts google-noto-serif-fonts google-noto-mono-fonts liberation-sans-fonts liberation-serif-fonts liberation-mono-fonts abattis-cantarell-fonts dejavu-sans-fonts dejavu-serif-fonts
-
 sudo fc-cache -fv
 
 rm /tmp/JetBrainsMono.zip
