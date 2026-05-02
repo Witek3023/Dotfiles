@@ -47,20 +47,17 @@ else
     git pull
 fi
 
-echo "Instalacja ikon Tela Circle (nord)..."
+echo "Installing Tela Circle..."
 ./install.sh nord
 
 ICON_THEME="Tela-circle-nord"
 gsettings set org.gnome.desktop.interface icon-theme "$ICON_THEME"
 
-sudo flatpak override --filesystem=/usr/share/themes:ro
-sudo flatpak override --filesystem=/usr/share/icons:ro
-sudo flatpak override --filesystem=/usr/share/fonts:ro
-sudo flatpak override --filesystem=$HOME/.local/share/themes:ro
-sudo flatpak override --filesystem=$HOME/.local/share/icons:ro
-sudo flatpak override --filesystem=$HOME/.local/share/fonts:ro
-sudo flatpak override --filesystem=$HOME/.config/gtk-3.0:ro
-sudo flatpak override --filesystem=$HOME/.config/gtk-4.0:ro
+THEME_SRC="$HOME/.local/share/themes/Orchis-Green-Dark-Nord"
+ICONS_SRC="$HOME/.local/share/icons/Tela-circle-nord"
+
+flatpak install org.gtk.Gtk3theme.Orchis-Dark -y
+flatpak override --user --env=GTK_THEME=Orchis-Dark
 
 echo "Icons instaled and set."
 echo "Done"
