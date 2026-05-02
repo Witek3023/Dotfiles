@@ -13,9 +13,9 @@ Currently used dotfiles, maintained using stow.
 **prompt** - custom zsh<br>
 **plugins** - zsh-syntax-highlighting, zsh-autocompletion<br>
 **terminal** - foot<br>
-**colorscheme** - Nord<br>
-**wm** - sway<br>
-**fonts** - IBM Plex Sans, JetBrains Mono Nerd Font<br>
+**colorscheme** - Custom Dark<br>
+**wm** - KDE<br>
+**fonts** - JetBrains Mono Nerd Font<br>
 <br>
 
 ### MIT License
