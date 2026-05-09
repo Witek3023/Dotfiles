@@ -1,23 +1,4 @@
-//
-/* You may copy+paste this file and use it as it is.
- *
- * If you make changes to your about:config while the program is running, the
- * changes will be overwritten by the user.js when the application restarts.
- *
- * To make lasting changes to preferences, you will have to edit the user.js.
- */
-
-/****************************************************************************
- * Betterfox                                                                *
- * "Ad meliora"                                                             *
- * version: 128                                                             *
- * url: https://github.com/yokoffing/Betterfox                              *
-****************************************************************************/
-
-/****************************************************************************
- * SECTION: FASTFOX                                                         *
-****************************************************************************/
-/** GENERAL ***/
+/** GENERAL ***/
 user_pref("content.notify.interval", 100000);
 
 /** GFX ***/
@@ -55,10 +36,7 @@ user_pref("network.predictor.enable-prefetch", false);
 user_pref("layout.css.grid-template-masonry-value.enabled", true);
 user_pref("dom.enable_web_task_scheduling", true);
 user_pref("dom.security.sanitizer.enabled", true);
-
-/****************************************************************************
- * SECTION: SECUREFOX                                                       *
-****************************************************************************/
+
 /** TRACKING PROTECTION ***/
 user_pref("browser.contentblocking.category", "strict");
 user_pref("urlclassifier.trackingSkipURLs", "*.reddit.com, *.twitter.com, *.twimg.com, *.tiktok.com");
@@ -167,10 +145,7 @@ user_pref("captivedetect.canonicalURL", "");
 user_pref("network.captive-portal-service.enabled", false);
 user_pref("network.connectivity-service.enabled", false);
 user_pref("dom.private-attribution.submission.enabled", false);
-
-/****************************************************************************
- * SECTION: PESKYFOX                                                        *
-****************************************************************************/
+
 /** MOZILLA UI ***/
 user_pref("browser.privatebrowsing.vpnpromourl", "");
 user_pref("extensions.getAddons.showPane", false);
@@ -227,28 +202,14 @@ user_pref("browser.bookmarks.openInTabClosesMenu", false);
 user_pref("browser.menu.showViewImageInfo", true);
 user_pref("findbar.highlightAll", true);
 user_pref("layout.word_select.eat_space_to_next_word", false);
-
-/****************************************************************************
- * START: MY OVERRIDES                                                      *
-****************************************************************************/
-// visit https://github.com/yokoffing/Betterfox/wiki/Common-Overrides
-// visit https://github.com/yokoffing/Betterfox/wiki/Optional-Hardening
-// Enter your personal overrides below this line:
+
 user_pref("layout.css.prefers-color-scheme.content-override", 0);
 user_pref("browser.download.useDownloadDir", true);
 user_pref("browser.search.suggest.enabled", true);
-
-/****************************************************************************
- * SECTION: SMOOTHFOX                                                       *
-****************************************************************************/
-// visit https://github.com/yokoffing/Betterfox/blob/main/Smoothfox.js
-// Enter your scrolling overrides below this line:
+
 user_pref("apz.overscroll.enabled", true); // DEFAULT NON-LINUX
 user_pref("general.smoothScroll", true); // DEFAULT
 user_pref("mousewheel.min_line_scroll_amount", 10); // 10-40; adjust this number to your liking; default=5
 user_pref("general.smoothScroll.mouseWheel.durationMinMS", 80); // default=50
 user_pref("general.smoothScroll.currentVelocityWeighting", "0.15"); // default=.25
 user_pref("general.smoothScroll.stopDecelerationWeighting", "0.6"); // default=.4
-/****************************************************************************
- * END: BETTERFOX                                                           *
-****************************************************************************/
