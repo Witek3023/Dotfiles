@@ -33,7 +33,7 @@ install_font "$JB_URL" "$JB_DIR" "JetBrainsMono Nerd Font"
 install_font "$IBM_URL" "$IBM_DIR" "IBM Plex Sans"
 
 echo "==> Reloading cache..."
-sudo fc-cache -fv
+sudo fc-cache -f
 
 echo "==> Setting flatpak overrides..."
 sudo flatpak override --filesystem=/usr/share/fonts:ro
