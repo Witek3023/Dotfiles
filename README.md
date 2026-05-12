@@ -15,7 +15,7 @@ Currently used dotfiles, maintained using stow.
 **terminal** - foot<br>
 **colorscheme** - Custom Dark<br>
 **wm** - KDE<br>
-**fonts** - JetBrains Mono Nerd Font<br>
+**fonts** - JetBrains Mono Nerd Font, IBM Plex Sans<br>
 <br>
 
 ### MIT License
