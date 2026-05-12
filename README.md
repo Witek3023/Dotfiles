@@ -1,13 +1,7 @@
 # Dotfiles
 Currently used dotfiles, maintained using stow.
 
-> **These are my dotfiles. There are many like them, but these are mine.**
-> 
-> They are a living record of my workflow, my late-night tweaks, and my endless pursuit of the perfect setup. 
-> 
-> Without me, my dotfiles are just text. Without my dotfiles, I am stuck on default settings. 
-> 
-> I will symlink them true. I will push my changes *before* I break my system. And when needed my dotfiles will rebuild my environment from the ashes. 🌲💻
+> **These are my dotfiles. There are many like them, but these are mine.**🌲💻
 
 **shell** - zsh<br>
 **prompt** - custom zsh<br>
@@ -17,9 +11,3 @@ Currently used dotfiles, maintained using stow.
 **wm** - KDE<br>
 **fonts** - JetBrains Mono Nerd Font, IBM Plex Sans<br>
 <br>
-
-### MIT License
-
-Copyright (c) 2026 Witek3023
-
-My scripts and config files in this repository are covered by the MIT License, a highly permissive license that lets you use, modify, copy, distribute, sell, or share the software however you like. The only condition is that you must include the license and copyright notice with the software.
