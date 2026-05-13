@@ -1,0 +1,2 @@
+exec dbus-update-activation-environment --systemd GTK_THEME QT_QPA_PLATFORMTHEME XCURSOR_THEME XCURSOR_SIZE
+exec systemctl --user import-environment GTK_THEME QT_QPA_PLATFORMTHEME XCURSOR_THEME XCURSOR_SIZE

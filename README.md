@@ -8,6 +8,7 @@ Currently used dotfiles, maintained using stow.
 **Plugins** - zsh-syntax-highlighting, zsh-autocompletion<br>
 **Terminal** - foot<br>
 **Colorscheme** - Custom Dark<br>
-**WM** - KDE<br>
+**WM** - Sway<br>
+**Launcher** - Fuzzel<br>
 **Fonts** - JetBrains Mono Nerd Font, IBM Plex Sans<br>
 **SDDM Theme** - Custom [sddm-astronaut-theme](https://github.com/Keyitdev/sddm-astronaut-theme)<br>
