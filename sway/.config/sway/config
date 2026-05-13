@@ -234,6 +234,28 @@ bar {
 
 include /etc/sway/config.d/*
 
+# --- 1. Zmienne środowiskowe (Przekazywane do D-Bus i Systemd) ---
+# To naprawia logowanie w Brave/Nextcloud i motywy w aplikacjach
+exec dbus-update-activation-environment --systemd \
+    GTK_THEME=Adwaita:dark \
+    QT_QPA_PLATFORMTHEME=qt5ct \
+    XCURSOR_THEME=Adwaita \
+    XCURSOR_SIZE=24 \
+    XDG_CURRENT_DESKTOP=sway \
+    XDG_SESSION_DESKTOP=sway
+
+# --- 2. Magazyn haseł i usługi tła ---
+# Zapamiętywanie loginów
+exec gnome-keyring-daemon --start --components=secrets
+# Pasek statusu
 exec waybar &
-exec dbus-update-activation-environment --systemd GTK_THEME QT_QPA_PLATFORMTHEME XCURSOR_THEME XCURSOR_SIZE
-exec systemctl --user import-environment GTK_THEME QT_QPA_PLATFORMTHEME XCURSOR_THEME XCURSOR_SIZE
+
+# --- 3. Wymuszanie wyglądu (GSettings) ---
+# To zapewnia, że okna i ikony są ciemne/zielone
+exec_always {
+    gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
+    gsettings set org.gnome.desktop.interface gtk-theme 'Adwaita-dark'
+    gsettings set org.gnome.desktop.interface icon-theme 'Tela-circle-green'
+    gsettings set org.gnome.desktop.interface cursor-theme 'Adwaita'
+    gsettings set org.gnome.desktop.interface cursor-size 24
+}
