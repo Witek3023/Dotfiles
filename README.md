@@ -3,11 +3,11 @@ Currently used dotfiles, maintained using stow.
 
 > **These are my dotfiles. There are many like them, but these are mine.**🌲💻
 
-**shell** - zsh<br>
-**prompt** - custom zsh<br>
-**plugins** - zsh-syntax-highlighting, zsh-autocompletion<br>
-**terminal** - foot<br>
-**colorscheme** - Custom Dark<br>
-**wm** - KDE<br>
-**fonts** - JetBrains Mono Nerd Font, IBM Plex Sans<br>
-<br>
+**Shell** - zsh<br>
+**Prompt** - custom zsh<br>
+**Plugins** - zsh-syntax-highlighting, zsh-autocompletion<br>
+**Terminal** - foot<br>
+**Colorscheme** - Custom Dark<br>
+**WM** - KDE<br>
+**Fonts** - JetBrains Mono Nerd Font, IBM Plex Sans<br>
+**SDDM Theme** - Custom [sddm-astronaut-theme](https://github.com/Keyitdev/sddm-astronaut-theme)<br>
