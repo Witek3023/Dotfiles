@@ -1,0 +1,18 @@
+profile laptop_standalone {
+    output "eDP-1" enable
+}
+
+profile pc_default {
+    output "DP-2" position 0,0
+    output "HDMI-A-2" position -1080,0 transform 90
+}
+
+profile laptop_docked_single {
+    output "DP-1" position 0,0 enable
+    output "eDP-1" disable
+}
+
+profile laptop_docked_dual {
+    output "DP-1" position 0,0
+    output "eDP-1" position 2560,0
+}

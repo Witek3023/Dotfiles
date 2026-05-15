@@ -1,0 +1,36 @@
+# --- Wygląd ogólny ---
+font=IBM Plex Sans 14
+width=350
+height=150
+margin=20
+padding=15
+border-size=2
+border-radius=8
+background-color=#1e1e2e
+text-color=#cdd6f4
+border-color=#89b4fa
+progress-color=over #313244
+
+max-icon-size=64
+# Podaj pełną ścieżkę (zastąp 'TWOJA_NAZWA' swoją nazwą użytkownika)
+max-icon-size=64
+icon-path=/usr/share/icons/Tela-circle-green/scalable/apps:/usr/share/icons/Tela-circle-green/scalable/places:/usr/share/icons/hicolor
+# --- Zachowanie ---
+# Czas wyświetlania w milisekundach (5000 = 5s)
+default-timeout=5000
+# Gdzie mają się pojawiać powiadomienia
+anchor=top-right
+# Układanie powiadomień (najnowsze na górze)
+sort=-time
+
+# --- Specyficzne ustawienia (Tryby) ---
+
+# Powiadomienia o wysokim priorytecie (np. bateria)
+[urgency=high]
+border-color=#f38ba8
+default-timeout=0
+
+# Tryb "Nie przeszkadzać" (przydatne przy laptopie/prezentacjach)
+# Możesz go aktywować komendą: makoctl mode -a do-not-disturb
+[mode=do-not-disturb]
+invisible=1

@@ -54,7 +54,7 @@ output * bg forest.jpg fill
 #   }
 #
 #   input type:keyboard {
-#       xkb_layout "eu"
+#       xkb_layout "pl"
 #   }
 #
 # You can also configure each device individually.
@@ -214,41 +214,43 @@ bindsym $mod+r mode "resize"
     # Special key to take a screenshot with grim
     bindsym Print exec grim
 
+# W ~/.config/sway/config
+bindsym XF86AudioPlay exec playerctl play-pause
+bindsym XF86AudioNext exec playerctl next
+bindsym XF86AudioPrev exec playerctl previous
+
+# W configu Swaya
+bindsym $mod+Shift+v exec clipman pick --tool=STDOUT | fuzzel -d | clipman store --no-persist
 #
 # Status Bar:
 #
 # Read `man 5 sway-bar` for more information about this section.
-bar {
-    position top
-
-    # When the status_command prints a new line to stdout, swaybar updates.
-    # The default just shows the current date and time.
-    status_command while date +'%Y-%m-%d %X'; do sleep 1; done
-
-    colors {
-        statusline #ffffff
-        background #323232
-        inactive_workspace #32323200 #32323200 #5c5c5c
-    }
-}
 
 include /etc/sway/config.d/*
 
 # --- 1. Zmienne środowiskowe (Przekazywane do D-Bus i Systemd) ---
 # To naprawia logowanie w Brave/Nextcloud i motywy w aplikacjach
-exec dbus-update-activation-environment --systemd \
+# --- 1. Zmienne środowiskowe ---
+# Eksportujemy Twoje motywy ORAZ zmienne sesji Wayland
+# --- 1. Zmienne środowiskowe ---
+# Rejestrujemy wszystko w D-Bus (motywy + sesja)
+exec_always dbus-update-activation-environment --systemd \
+    WAYLAND_DISPLAY \
+    DISPLAY \
+    SWAYSOCK \
+    XDG_CURRENT_DESKTOP=sway \
+    XDG_SESSION_DESKTOP=sway \
     GTK_THEME=Adwaita:dark \
     QT_QPA_PLATFORMTHEME=qt5ct \
     XCURSOR_THEME=Adwaita \
-    XCURSOR_SIZE=24 \
-    XDG_CURRENT_DESKTOP=sway \
-    XDG_SESSION_DESKTOP=sway
+    XCURSOR_SIZE=24
 
+# Rejestrujemy to samo w Systemd (żeby portale widziały sesję)
+exec systemctl --user import-environment WAYLAND_DISPLAY DISPLAY SWAYSOCK XDG_CURRENT_DESKTOP
 # --- 2. Magazyn haseł i usługi tła ---
 # Zapamiętywanie loginów
-exec gnome-keyring-daemon --start --components=secrets
+exec gnome-keyring-daemon --start --components=pkcs11,secrets,ssh
 # Pasek statusu
-exec waybar &
 
 # --- 3. Wymuszanie wyglądu (GSettings) ---
 # To zapewnia, że okna i ikony są ciemne/zielone
@@ -258,4 +260,18 @@ exec_always {
     gsettings set org.gnome.desktop.interface icon-theme 'Tela-circle-green'
     gsettings set org.gnome.desktop.interface cursor-theme 'Adwaita'
     gsettings set org.gnome.desktop.interface cursor-size 24
+    gsettings set org.gnome.desktop.interface font-name 'IBM Plex Sans 14'
 }
+
+exec_always pkill kanshi; exec kanshi
+exec_always pkill mako; exec mako
+# 1. Historia i trzymanie tekstu (Clipman)
+exec wl-paste --type text --watch clipman store --no-persist
+
+exec_always {
+    killall -q waybar
+    sleep 1
+    waybar &
+}
+# 2. Synchronizacja "zaznaczenia myszką" z "Ctrl+C"
+exec wl-paste -p --watch wl-copy -p

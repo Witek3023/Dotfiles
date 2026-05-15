@@ -24,4 +24,5 @@ fi
 
 sudo cp -r ~/Dotfiles/sddm_astronaut_theme_modified "$THEME_DIR"
 
+echo "Configure outputs in /var/lib/sddm/.config/kwinoutputconfig.json"
 echo "Installation complete!"

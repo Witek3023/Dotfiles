@@ -14,6 +14,7 @@ gsettings set org.gnome.desktop.interface gtk-theme 'Adwaita-dark'
 gsettings set org.gnome.desktop.interface icon-theme 'Tela-circle-green'
 gsettings set org.gnome.desktop.interface cursor-theme 'Adwaita'
 gsettings set org.gnome.desktop.interface cursor-size 24
+gsettings set org.gnome.desktop.interface font-name 'IBM Plex Sans 14'
 
 mkdir -p ~/.config/gtk-3.0 ~/.config/gtk-4.0
 
