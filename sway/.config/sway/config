@@ -294,7 +294,8 @@ bindsym {
 }
 
 # W configu Swaya
-bindsym $mod+Shift+v exec clipman pick --tool=STDOUT | fuzzel -d | clipman store --no-persist
+bindsym $mod+Shift+v exec clipman pick --tool=STDOUT | fuzzel -d | wl-copy
+
 #
 # Status Bar:
 #
@@ -355,7 +356,7 @@ exec {
     gsettings set org.gnome.desktop.interface icon-theme 'Tela-circle-green'
     gsettings set org.gnome.desktop.interface cursor-theme 'Adwaita'
     gsettings set org.gnome.desktop.interface cursor-size 24
-    gsettings set org.gnome.desktop.interface font-name 'IBM Plex Sans 14'
+    gsettings set org.gnome.desktop.interface font-name 'IBM Plex Sans 16'
 }
 
 exec lxqt-policykit-agent
