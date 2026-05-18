@@ -4,7 +4,7 @@ set -e
 
 echo "Starting SDDM Theme installation..."
 
-sudo dnf install sddm -y
+sudo dnf install sddm  qt5-qtmultimedia -y
 sudo systemctl set-default graphical.target  
 sudo systemctl enable sddm --now
 
