@@ -1,0 +1,28 @@
+[global]
+    # Ogólne ustawienia wyglądu powiadomień
+    font = JetBrainsMono Nerd Font Mono 14
+    frame_width = 2
+    frame_color = "#6a9955"       # Niebieski akcent jako ramka (regular4)
+    highlight = "#6a9955"
+    separator_color = frame
+    enable_mpris = true
+
+[urgency_low]
+    # Niska ważność - stonowane tło i tekst
+    background = "#1e1e1e"        # Główny background
+    foreground = "#808080"        # Szary tekst (bright0)
+    timeout = 4
+
+[urgency_normal]
+    # Normalna ważność - standardowe kolory
+    background = "#1e1e1e"        # Główny background
+    foreground = "#d4d4d4"        # Główny foreground
+    timeout = 10
+
+[urgency_critical]
+    # Krytyczne powiadomienia - czerwony akcent
+    background = "#1e1e1e"        # Główny background
+    foreground = "#f44747"        # Czerwony tekst (regular1)
+    frame_color = "#f14c4c"       # Jasnoczerwona ramka (bright1)
+    timeout = 0
+
