@@ -15,7 +15,7 @@ case "$choice" in
         systemctl suspend
         ;;
     "󰗽 Logout")
-        labwc -E
+        swaymsg exit
         ;;
     *)
         exit 0
