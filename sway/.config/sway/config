@@ -14,7 +14,7 @@ set $down j
 set $up k
 set $right l
 # Your preferred terminal emulator
-set $term foot
+set $term footclient
 # Your preferred application launcher
 set $menu fuzzel
 
@@ -38,6 +38,20 @@ output * bg forest.jpg fill
 #          timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
 #          before-sleep 'swaylock -f -c 000000'
 #
+
+
+#exec LT="$lock_timeout" ST="$screen_timeout" LT=${LT:-300} ST=${ST:-60} && \
+#    swayidle -w \
+#        timeout $LT 'swaylock -f' \
+#        timeout $((LT + ST)) 'swaymsg "output * power off"' \
+#                      resume 'swaymsg "output * power on"'  \
+#        timeout $ST 'pgrep -xu "$USER" swaylock >/dev/null && swaymsg "output * power off"' \
+#             resume 'pgrep -xu "$USER" swaylock >/dev/null && swaymsg "output * power on"'  \
+#        before-sleep 'swaylock -f' \
+#        lock 'swaylock -f' \
+#        unlock 'pkill -xu "$USER" -SIGUSR1 swaylock'
+
+
 # This will lock your screen after 300 seconds of inactivity, then turn off
 # your displays after another 300 seconds, and turn your screens back on when
 # resumed. It will also lock your screen before your computer goes to sleep.
@@ -46,16 +60,16 @@ output * bg forest.jpg fill
 #
 # Example configuration:
 #
-#   input type:touchpad {
-#       dwt enabled
-#       tap enabled
-#       natural_scroll enabled
-#       middle_emulation enabled
-#   }
-#
-#   input type:keyboard {
-#       xkb_layout "pl"
-#   }
+  input type:touchpad {
+      dwt enabled
+      tap enabled
+      natural_scroll enabled
+      middle_emulation enabled
+  }
+
+  input type:keyboard {
+      xkb_layout "pl"
+  }
 #
 # You can also configure each device individually.
 # Read `man 5 sway-input` for more information about this section.
@@ -204,20 +218,80 @@ bindsym $mod+r mode "resize"
 # Utilities:
 #
     # Special keys to adjust volume via PulseAudio
-    bindsym --locked XF86AudioMute exec pactl set-sink-mute \@DEFAULT_SINK@ toggle
-    bindsym --locked XF86AudioLowerVolume exec pactl set-sink-volume \@DEFAULT_SINK@ -5%
-    bindsym --locked XF86AudioRaiseVolume exec pactl set-sink-volume \@DEFAULT_SINK@ +5%
-    bindsym --locked XF86AudioMicMute exec pactl set-source-mute \@DEFAULT_SOURCE@ toggle
-    # Special keys to adjust brightness via brightnessctl
-    bindsym --locked XF86MonBrightnessDown exec brightnessctl set 5%-
-    bindsym --locked XF86MonBrightnessUp exec brightnessctl set 5%+
-    # Special key to take a screenshot with grim
-    bindsym Print exec grim
+    # bindsym --locked XF86AudioMute exec pactl set-sink-mute \@DEFAULT_SINK@ toggle
+    # bindsym --locked XF86AudioLowerVolume exec pactl set-sink-volume \@DEFAULT_SINK@ -5%
+    # bindsym --locked XF86AudioRaiseVolume exec pactl set-sink-volume \@DEFAULT_SINK@ +5%
+    # bindsym --locked XF86AudioMicMute exec pactl set-source-mute \@DEFAULT_SOURCE@ toggle
 
+# 1. Definicja zmiennych (kroku głośności i limitu)
+set $volume_step 5
+set $volume_limit 100
+
+# 2. Definicja powiadomienia (czysty pactl + notify-send, bez skryptu)
+set $volume_notification_cmd command -v notify-send >/dev/null && \
+    VALUE=$(pactl get-sink-volume @DEFAULT_SINK@ | grep -Po '\d+(?=%)' | head -n 1) && \
+    MUTED=$(pactl get-sink-mute @DEFAULT_SINK@ | grep -q "yes" && echo " (Muted)" || echo "") && \
+    notify-send -e \
+        -h string:x-canonical-private-synchronous:volume \
+        -h "int:value:$VALUE" \
+        -t 800 \
+        "Głośność: ${VALUE}%${MUTED}"
+
+# 3. Przypisanie klawiszy bezpośrednio w Swayu
+bindsym --locked {
+    XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +$volume_step% && $volume_notification_cmd
+    XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -$volume_step% && $volume_notification_cmd
+    XF86AudioMute    exec pactl set-sink-mute @DEFAULT_SINK@ toggle && $volume_notification_cmd
+    XF86AudioMicMute exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
+}
+    # Special keys to adjust brightness via brightnessctl
+    # bindsym --locked XF86MonBrightnessDown exec brightnessctl set 5%-
+    # bindsym --locked XF86MonBrightnessUp exec brightnessctl set 5%+
+    set $brightness_notification_cmd  command -v notify-send >/dev/null && \
+        VALUE=$(brightnessctl --percentage get) && \
+        notify-send -e -h string:x-canonical-private-synchronous:brightness \
+            -h "int:value:$VALUE" -t 800 "Brightness: ${VALUE}%"
+
+bindsym XF86MonBrightnessDown exec \
+        'STEP="$brightness_step" && brightnessctl -q set ${STEP:-5}%- && $brightness_notification_cmd'
+bindsym XF86MonBrightnessUp exec \
+        'STEP="$brightness_step" && brightnessctl -q set +${STEP:-5}% && $brightness_notification_cmd'
+
+    # Special key to take a screenshot with grim
+bindsym {
+    # Capture the currently active output
+    Print       exec grimshot save output | wl-copy
+    # Capture the currently active window
+    Alt+Print   exec grimshot save active
+    # Select and capture a custom rectangular area
+    # Shift+Print  exec grimshot save area
+}
+
+# Capture the currently active output to clipboard
+bindsym Shift+Print exec grimshot copy output
+
+# Capture the currently active window to clipboard
+bindsym Shift+Alt+Print exec grimshot copy active
+
+# Select and capture a custom rectangular area to clipboard
+bindsym Ctrl+Print exec grimshot copy area
 # W ~/.config/sway/config
-bindsym XF86AudioPlay exec playerctl play-pause
-bindsym XF86AudioNext exec playerctl next
-bindsym XF86AudioPrev exec playerctl previous
+# bindsym XF86AudioPlay exec playerctl play-pause
+# bindsym XF86AudioNext exec playerctl next
+# bindsym XF86AudioPrev exec playerctl previous
+
+bindsym --locked {
+    XF86AudioPlay       exec playerctl play-pause
+    XF86AudioStop       exec playerctl stop
+}
+
+bindsym {
+    XF86AudioForward    exec playerctl position +10
+    XF86AudioNext       exec playerctl next
+    XF86AudioPause      exec playerctl pause
+    XF86AudioPrev       exec playerctl previous
+    XF86AudioRewind     exec playerctl position -10
+}
 
 # W configu Swaya
 bindsym $mod+Shift+v exec clipman pick --tool=STDOUT | fuzzel -d | clipman store --no-persist
@@ -226,14 +300,44 @@ bindsym $mod+Shift+v exec clipman pick --tool=STDOUT | fuzzel -d | clipman store
 #
 # Read `man 5 sway-bar` for more information about this section.
 
-include /etc/sway/config.d/*
 
-# --- 1. Zmienne środowiskowe (Przekazywane do D-Bus i Systemd) ---
-# To naprawia logowanie w Brave/Nextcloud i motywy w aplikacjach
-# --- 1. Zmienne środowiskowe ---
-# Eksportujemy Twoje motywy ORAZ zmienne sesji Wayland
-# --- 1. Zmienne środowiskowe ---
-# Rejestrujemy wszystko w D-Bus (motywy + sesja)
+for_window [class="Chromium-browser"] mark Browser
+for_window [class="Brave-browser"] mark Browser
+for_window [class="brave-origin-nightly"] mark Browser
+for_window [class="firefox"]  mark Browser
+for_window [app_id="Chromium-browser"] mark Browser
+for_window [app_id="brave-browser"] mark Browser
+for_window [app_id="brave-origin-nightly"] mark Browser
+for_window [app_id="firefox"] mark Browser
+
+# inhibit scrensaver for fullscreen browser windows
+for_window [con_mark="Browser"] {
+    inhibit_idle fullscreen
+}
+
+for_window [app_id="pavucontrol"] {
+    floating enable
+    move position center
+}
+
+for_window [app_id="pavucontrol-qt"] {
+    floating enable
+    move position center
+}
+
+default_border pixel 5
+default_floating_border pixel 5
+
+# Klasa okna          Ramka   Tło     Tekst   Indykator Child
+client.focused          #6a9955 #1e1e1e #d4d4d4 #6a9955   #6a9955
+client.focused_inactive #dcdcaa #1e1e1e #808080 #3c3c3c   #3c3c3c
+client.unfocused        #1e1e1e #1e1e1e #808080 #252526   #252526
+client.urgent           #f44747 #1e1e1e #d4d4d4 #f44747   #f44747
+
+gaps inner 5
+gaps outer 5
+
+include /etc/sway/config.d/*
 exec_always dbus-update-activation-environment --systemd \
     WAYLAND_DISPLAY \
     DISPLAY \
@@ -245,16 +349,7 @@ exec_always dbus-update-activation-environment --systemd \
     XCURSOR_THEME=Adwaita \
     XCURSOR_SIZE=24
 
-# Rejestrujemy to samo w Systemd (żeby portale widziały sesję)
-exec systemctl --user import-environment WAYLAND_DISPLAY DISPLAY SWAYSOCK XDG_CURRENT_DESKTOP
-# --- 2. Magazyn haseł i usługi tła ---
-# Zapamiętywanie loginów
-exec gnome-keyring-daemon --start --components=pkcs11,secrets,ssh
-# Pasek statusu
-
-# --- 3. Wymuszanie wyglądu (GSettings) ---
-# To zapewnia, że okna i ikony są ciemne/zielone
-exec_always {
+exec {
     gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
     gsettings set org.gnome.desktop.interface gtk-theme 'Adwaita-dark'
     gsettings set org.gnome.desktop.interface icon-theme 'Tela-circle-green'
@@ -263,15 +358,11 @@ exec_always {
     gsettings set org.gnome.desktop.interface font-name 'IBM Plex Sans 14'
 }
 
-exec_always pkill kanshi; exec kanshi
-exec_always pkill mako; exec mako
-# 1. Historia i trzymanie tekstu (Clipman)
+exec lxqt-policykit-agent
+exec nm-applet
+exec blueman-applet
+exec kanshi
 exec wl-paste --type text --watch clipman store --no-persist
 
-exec_always {
-    killall -q waybar
-    sleep 1
-    waybar &
-}
-# 2. Synchronizacja "zaznaczenia myszką" z "Ctrl+C"
-exec wl-paste -p --watch wl-copy -p
+exec sh -c "killall -q waybar; while pgrep -u \$UID -x waybar >/dev/null; do sleep 0.5; done; waybar"
+exec foot --server
