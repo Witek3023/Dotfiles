@@ -247,6 +247,7 @@ bindsym --locked {
     # Special keys to adjust brightness via brightnessctl
     # bindsym --locked XF86MonBrightnessDown exec brightnessctl set 5%-
     # bindsym --locked XF86MonBrightnessUp exec brightnessctl set 5%+
+    set $brightness_step 5
     set $brightness_notification_cmd  command -v notify-send >/dev/null && \
         VALUE=$(brightnessctl --percentage get) && \
         notify-send -e -h string:x-canonical-private-synchronous:brightness \
@@ -340,11 +341,6 @@ gaps outer 5
 
 include /etc/sway/config.d/*
 exec_always dbus-update-activation-environment --systemd \
-    WAYLAND_DISPLAY \
-    DISPLAY \
-    SWAYSOCK \
-    XDG_CURRENT_DESKTOP=sway \
-    XDG_SESSION_DESKTOP=sway \
     GTK_THEME=Adwaita:dark \
     QT_QPA_PLATFORMTHEME=qt5ct \
     XCURSOR_THEME=Adwaita \
@@ -364,6 +360,5 @@ exec nm-applet
 exec blueman-applet
 exec kanshi
 exec wl-paste --type text --watch clipman store --no-persist
-
-exec sh -c "killall -q waybar; while pgrep -u \$UID -x waybar >/dev/null; do sleep 0.5; done; waybar"
 exec foot --server
+exec_always sh -c "killall -q waybar; while pgrep -u \$UID -x waybar >/dev/null; do sleep 0.5; done; waybar"
