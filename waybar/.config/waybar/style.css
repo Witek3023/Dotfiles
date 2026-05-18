@@ -1,14 +1,12 @@
 * {
-    font-family: 'Noto Sans Mono', 'Font Awesome 6 Free', 'Font Awesome 6 Brands', monospace;
-    font-size: 13px;
+    font-family: 'JetBrainsMono Nerd Font Mono';
+    font-weight: 500;
+    font-size: 14pt;
 }
 
 window#waybar {
     background-color: #1e1e1e;
-    border-bottom: 3px solid rgba(100, 114, 125, 0.5);
-    color: #ffffff;
-    transition-property: background-color;
-    transition-duration: .5s;
+    color: #d4d4d4;
 }
 
 window#waybar.hidden {
@@ -168,24 +166,24 @@ label:focus {
 }
 
 #cpu {
-    background-color: #2ecc71;
+    background-color: #6a9955;
     color: #000000;
 }
 
 #memory {
-    background-color: #9b59b6;
+    background-color: #6a9955;
 }
 
 #disk {
-    background-color: #964B00;
+    background-color: #6a9955;
 }
 
 #backlight {
-    background-color: #90b1b1;
+    background-color: #6a9955;
 }
 
 #network {
-    background-color: #2980b9;
+    background-color: #6a9955;
 }
 
 #network.disconnected {
@@ -193,7 +191,7 @@ label:focus {
 }
 
 #pulseaudio {
-    background-color: #f1c40f;
+    background-color: #6a9955;
     color: #000000;
 }
 
@@ -226,7 +224,7 @@ label:focus {
 }
 
 #temperature {
-    background-color: #f0932b;
+    background-color: #6a9955;
 }
 
 #temperature.critical {
@@ -234,7 +232,7 @@ label:focus {
 }
 
 #tray {
-    background-color: #2980b9;
+    background-color: #6a9955;
 }
 
 #tray > .passive {
@@ -247,7 +245,7 @@ label:focus {
 }
 
 #idle_inhibitor {
-    background-color: #2d3436;
+    background-color: #6a9955;
 }
 
 #idle_inhibitor.activated {
