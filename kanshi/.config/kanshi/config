@@ -3,16 +3,16 @@ profile laptop_standalone {
 }
 
 profile pc_default {
-    output "DP-2" position 0,0
+    output "DP-2" mode 2560x1440@144Hz position 0,0
     output "HDMI-A-2" position -1080,0 transform 90
 }
 
 profile laptop_docked_single {
-    output "DP-1" position 0,0 enable
+    output "DP-3" mode 2560x1440@100Hz position 0,0 enable
     output "eDP-1" disable
 }
 
 profile laptop_docked_dual {
-    output "DP-1" position 0,0
-    output "eDP-1" position 2560,0
+    output "DP-3" mode 2560x1440@100Hz position 0,0
+    output "eDP-1" enable position 2560,0
 }
