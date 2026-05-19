@@ -31,5 +31,6 @@
     "notebook.markup.fontSize": 16,
     "notebook.output.fontSize": 16,
     "markdown.preview.fontSize": 16,
-    "git.enableSmartCommit": true
+    "git.enableSmartCommit": true,
+    "python.languageServer": "Pylance"
 }
