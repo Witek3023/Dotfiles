@@ -1,4 +1,13 @@
-/** GENERAL ***/
+//           _ _       _
+// __      _(_) |_ ___| | ____ _
+// \ \ /\ / / | __/ _ \ |/ / _` |
+//  \ V  V /| | ||  __/   < (_| |
+//   \_/\_/ |_|\__\___|_|\_\__, |
+//                         |___/
+// Witek3023
+// https://github.com/Witek3023
+
+/** GENERAL ***/
 user_pref("content.notify.interval", 100000);
 
 /** GFX ***/
@@ -36,7 +45,8 @@ user_pref("network.predictor.enable-prefetch", false);
 user_pref("layout.css.grid-template-masonry-value.enabled", true);
 user_pref("dom.enable_web_task_scheduling", true);
 user_pref("dom.security.sanitizer.enabled", true);
-
+
+
 /** TRACKING PROTECTION ***/
 user_pref("browser.contentblocking.category", "strict");
 user_pref("urlclassifier.trackingSkipURLs", "*.reddit.com, *.twitter.com, *.twimg.com, *.tiktok.com");
@@ -145,7 +155,8 @@ user_pref("captivedetect.canonicalURL", "");
 user_pref("network.captive-portal-service.enabled", false);
 user_pref("network.connectivity-service.enabled", false);
 user_pref("dom.private-attribution.submission.enabled", false);
-
+
+
 /** MOZILLA UI ***/
 user_pref("browser.privatebrowsing.vpnpromourl", "");
 user_pref("extensions.getAddons.showPane", false);
@@ -202,11 +213,13 @@ user_pref("browser.bookmarks.openInTabClosesMenu", false);
 user_pref("browser.menu.showViewImageInfo", true);
 user_pref("findbar.highlightAll", true);
 user_pref("layout.word_select.eat_space_to_next_word", false);
-
+
+
 user_pref("layout.css.prefers-color-scheme.content-override", 0);
 user_pref("browser.download.useDownloadDir", true);
 user_pref("browser.search.suggest.enabled", true);
-
+
+
 user_pref("apz.overscroll.enabled", true); // DEFAULT NON-LINUX
 user_pref("general.smoothScroll", true); // DEFAULT
 user_pref("mousewheel.min_line_scroll_amount", 10); // 10-40; adjust this number to your liking; default=5

@@ -1,4 +1,13 @@
 #!/usr/bin/env bash
+#           _ _       _
+# __      _(_) |_ ___| | ____ _
+# \ \ /\ / / | __/ _ \ |/ / _` |
+#  \ V  V /| | ||  __/   < (_| |
+#   \_/\_/ |_|\__\___|_|\_\__, |
+#                         |___/
+# Witek3023
+# https://github.com/Witek3023
+
 set -e
 
 BIN_DIR="$HOME/.local/bin"

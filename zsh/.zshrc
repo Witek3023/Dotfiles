@@ -4,7 +4,7 @@
 #  \ V  V /| | ||  __/   < (_| |
 #   \_/\_/ |_|\__\___|_|\_\__, |
 #                         |___/
-# Witek3023 | Functional but Minimal
+# Witek3023
 # https://github.com/Witek3023
 
 # --- EXPORTS && ENV ---
